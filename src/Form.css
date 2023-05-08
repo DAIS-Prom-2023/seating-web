@@ -16,7 +16,7 @@
 }
 
 #reservation-form input {
-    border-width: 0 0 1px 0;
+    border: 1px solid #a8adb7;
     padding: 6px 0 6px 9px;
     font-size: 12px;
     background-color: rgb(234, 234, 234);
@@ -30,6 +30,12 @@
 
 .verification-code-input {
     padding: 6px 0;
+    font-size: 12px;
+}
+
+.verification-code-input > div > input {
+    border-radius: 0 !important;
+    background-color: rgb(234, 234, 234);
 }
 
 .form-wrapper {
