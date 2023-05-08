@@ -16,6 +16,9 @@ const Form = ({tableSelected, formStage, handleStageSelected}) => {
         if (tableSelected.length === 0) {
             hasErrors = true;
         }
+        if (formStage !== 0) {
+            hasErrors = true;
+        }
         if (email.length === 0) {
             toast.error('Email is required')
             hasErrors = true;
@@ -65,7 +68,7 @@ const Form = ({tableSelected, formStage, handleStageSelected}) => {
         return (
             <div className="form-wrapper" style={{height: 250}}>
                 <div className="form">
-                    <h2>Reserve a table</h2>
+                    <h2>Reserve a Table</h2>
                     <form id="reservation-form">
                         <div id="email">
                             <input required type="email" placeholder="Email for verification" value={email}
@@ -86,9 +89,10 @@ const Form = ({tableSelected, formStage, handleStageSelected}) => {
                                    }}/>
                         </div>
                         <div id="wxid">
-                            <input required type="text" placeholder="Wechat ID to get in touch" value={wxid} onChange={(e) => {
-                                setWxid(e.target.value);
-                            }}/>
+                            <input required type="text" placeholder="Wechat ID to get in touch" value={wxid}
+                                   onChange={(e) => {
+                                       setWxid(e.target.value);
+                                   }}/>
                         </div>
                         <div id="form-submit">
                             <button className="submit-button" onClick={(e) => {
@@ -126,8 +130,9 @@ const Form = ({tableSelected, formStage, handleStageSelected}) => {
             <div className="form-wrapper" style={{height: 250}}>
                 <div className="form">
                     <h2>Success!</h2>
-                    <p>You have successfully reserved a seat for DAIS Prom 2023. Details about your reservation will be
-                        sent shortly to your email.<br/><br/>We hope you have a great time at this year's Prom:
+                    <p>You have successfully reserved a seat for DAIS Prom 2023. Dress accordingly, and also: don't
+                        forget to pre-order a mask!. We will be serving complementary mocktails as well.<br/><br/>We
+                        hope you have a great time at this year's Prom:
                         Masquerade!</p>
                 </div>
             </div>

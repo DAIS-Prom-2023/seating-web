@@ -21,10 +21,11 @@ const Tables = ({tableSelected, handleTableSelection, formStage}) => {
 
     async function tableClicked(event, zoomToElement) {
         let table = event.target;
-        if (table.classList.contains('reserved') || formStage !== 0) {
-            toast.error("table already reserved");
+        if (formStage !== 0) return;
+        if (table.classList.contains('reserved')) {
+            toast.error("Table already reserved");
             return;
-        };
+        }
         handleTableSelection(table.id);
         if (tableSelected.length === 0) {
             await new Promise(r => setTimeout(r, 300));
@@ -35,13 +36,14 @@ const Tables = ({tableSelected, handleTableSelection, formStage}) => {
 
     return (
         <div className="canvas">
-            <TransformWrapper panning={{disabled: formStage !== 0}}>
+            <TransformWrapper panning={{disabled: formStage !== 0}} pinch={{disabled: formStage !== 0}}
+                              wheel={{disabled: formStage !== 0}} doubleClick={{disabled: true}}>
                 {({setTransform, zoomToElement}) => (
                     <TransformComponent>
                         <svg
                             width={width}
                             height={height - ((tableSelected.length === 0) ? 0 : 250) - 50}
-                            viewBox="0 0 3840 2160"
+                            viewBox="0 0 3000 2000"
                             version="1.1"
                             id="SVGRoot"
                             xmlns="http://www.w3.org/2000/svg"
