@@ -37,7 +37,7 @@ const Tables = ({tableSelected, handleTableSelection, formStage}) => {
     return (
         <div className="canvas">
             <TransformWrapper panning={{disabled: formStage !== 0}} pinch={{disabled: formStage !== 0}}
-                              wheel={{disabled: formStage !== 0}} doubleClick={{disabled: true}}>
+                              wheel={{disabled: formStage !== 0}} doubleClick={{disabled: true}} limitToBounds={false}>
                 {({setTransform, zoomToElement}) => (
                     <TransformComponent>
                         <svg
